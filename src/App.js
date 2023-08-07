@@ -1,23 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import AddColor from './components/AddColor';
+import DisplayBox from './components/DisplayBox';
 
 function App() {
+
+  const [currentColor, setCurrentColor] = useState([])
+
+  const selectedColor = (showColor) => {
+    setCurrentColor([...currentColor, showColor])
+    console.log(currentColor)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Welcome</h1>
+      <AddColor newColor={selectedColor}></AddColor>
+      <DisplayBox current={currentColor}></DisplayBox>
     </div>
   );
 }
